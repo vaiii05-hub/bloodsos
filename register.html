@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as Donor - BloodSOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">🩸 BloodSOS</nav>
+
+  <div class="form-container">
+    <h2>📋 Register as Donor</h2>
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" />
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" id="age" placeholder="Enter your age" />
+    </div>
+
+    <div class="form-group">
+      <label>Blood Group</label>
+      <select id="bloodGroup">
+        <option value="">-- Select Blood Group --</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <input type="text" id="city" placeholder="Enter your city" />
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter your phone number" />
+    </div>
+
+    <div class="form-group">
+      <label>Last Donated Date (if donated before)</label>
+      <input type="date" id="lastDonated" />
+    </div>
+
+    <div class="form-group">
+      <label>Availability Status</label>
+      <select id="status">
+        <option value="available">🟢 Available to Donate</option>
+        <option value="unavailable">🔴 Not Available</option>
+      </select>
+    </div>
+
+    <button class="submit-btn" onclick="registerDonor()">Register Now 🩸</button>
+    <p id="msg" class="msg"></p>
+
+    <!-- Edit Profile Section -->
+    <div id="editSection" style="display:none">
+      <hr style="margin:20px 0; border-color:#eee">
+      <h3 style="color:#cc0000;text-align:center">Already Registered?</h3>
+      <p style="text-align:center;color:#666;font-size:14px">
+        Update your availability or last donation date
+      </p>
+      <div class="form-group">
+        <label>Your Phone Number</label>
+        <input type="tel" id="editPhone" placeholder="Enter your registered phone" />
+      </div>
+      <div class="form-group">
+        <label>Update Status</label>
+        <select id="editStatus">
+          <option value="available">🟢 Available to Donate</option>
+          <option value="unavailable">🔴 Not Available Right Now</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Last Donated Date</label>
+        <input type="date" id="editLastDonated" />
+      </div>
+      <button class="submit-btn" onclick="updateProfile()" 
+        style="background:#ff6600">
+        Update My Profile 🔄
+      </button>
+      <p id="editMsg" class="msg"></p>
+    </div>
+
+    <button class="toggle-edit-btn" onclick="toggleEditSection()">
+      Already Registered? Update Profile
+    </button>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <div class="footer">BloodSOS © 2024 — Saving Lives Together ❤️</div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

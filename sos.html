@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency SOS - BloodSOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">🩸 BloodSOS</nav>
+
+  <div class="form-container">
+    <div style="text-align:center">
+      <span class="sos-badge">🚨 EMERGENCY REQUEST</span>
+    </div>
+    <h2>🆘 Emergency SOS</h2>
+
+    <div class="form-group">
+      <label>Patient Name</label>
+      <input type="text" id="sosName" placeholder="Enter patient name" />
+    </div>
+
+    <div class="form-group">
+      <label>Blood Group Needed</label>
+      <select id="sosBlood">
+        <option value="">-- Select Blood Group --</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Hospital Name</label>
+      <input type="text" id="sosHospital" placeholder="Enter hospital name" />
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <input type="text" id="sosCity" placeholder="Enter city" />
+    </div>
+
+    <div class="form-group">
+      <label>Contact Number</label>
+      <input type="tel" id="sosPhone" placeholder="Enter contact number" />
+    </div>
+
+    <div class="form-group">
+      <label>Additional Notes (optional)</label>
+      <textarea id="sosNote" placeholder="Any extra details..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="sendSOS()">
+      🚨 Send SOS Alert
+    </button>
+
+    <p id="sosMsg" class="msg"></p>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <div class="footer">BloodSOS © 2024 — Saving Lives Together ❤️</div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

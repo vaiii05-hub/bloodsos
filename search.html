@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Donors - BloodSOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">🩸 BloodSOS</nav>
+
+  <div class="form-container">
+    <h2>🔍 Search Donors</h2>
+
+    <div class="form-group">
+      <label>Blood Group</label>
+      <select id="searchBlood">
+        <option value="">-- Select Blood Group --</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>City (optional)</label>
+      <input type="text" id="searchCity" placeholder="Enter city to filter" />
+    </div>
+
+    <button class="submit-btn" onclick="searchDonors()">🔍 Search Now</button>
+
+    <div id="results" class="results"></div>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <div class="footer">BloodSOS © 2024 — Saving Lives Together ❤️</div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
