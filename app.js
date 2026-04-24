@@ -207,11 +207,13 @@ window.searchDonors = function () {
  
       // ✅ FIX: normalize both sides before comparing
       const donorCity = (d.city || "").toLowerCase().trim();
-      if (city && donorCity !== city) return;
+      const searchCity = city.toLowerCase().trim();
+      if (searchCity && !donorCity.includes(searchCity)) return;
  
       // Skip unavailable donors (check both field names for compatibility)
       const isUnavailable = d.status === "unavailable" || d.availability === "unavailable";
-      if (isUnavailable) return;
+      const isAvailable = d.status === "available" || d.availability === "available" || (!d.status && !d.availability);
+      if (!isAvailable) return;
  
       const days = daysSince(d.lastDonated);
       const nextEligible = d.lastDonated && d.lastDonated !== "Never"
