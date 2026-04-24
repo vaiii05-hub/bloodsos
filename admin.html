@@ -4,293 +4,186 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Dashboard – BloodSOS</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --red: #c0392b;
-      --red-dark: #922b21;
-      --red-light: #fadbd8;
-      --green: #1e8449;
-      --green-light: #d5f5e3;
-      --amber: #d68910;
-      --amber-light: #fef9e7;
-      --gray-bg: #f4f6f8;
-      --white: #ffffff;
-      --border: #e0e0e0;
-      --text: #1a1a1a;
-      --text-muted: #666;
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --red:#d92b3a;--rd:#a81e2a;--rl:#fff0f1;--rm:#ffd6d9;
+      --green:#0d7a4e;--gl:#e6f7f0;--amber:#c47c00;--blue:#1a5cb8;
+      --bg:#f7f4f2;--border:#e8e2de;--text:#1a1210;--muted:#8a7f7a;
     }
-
-    body { font-family: 'Segoe UI', sans-serif; background: var(--gray-bg); color: var(--text); min-height: 100vh; }
-
-    nav {
-      background: var(--red);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 28px;
-      height: 58px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .nav-left { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; }
-    .nav-badge { background: rgba(255,255,255,0.2); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
-    .nav-right { display: flex; align-items: center; gap: 12px; }
-    .nav-right a { color: white; text-decoration: none; font-size: 13px; opacity: 0.85; }
-    .nav-right a:hover { opacity: 1; text-decoration: underline; }
-    #logoutBtn {
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.35);
-      color: white;
-      padding: 6px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    #logoutBtn:hover { background: rgba(255,255,255,0.3); }
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    nav{background:var(--red);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(217,43,58,.3)}
+    .nav-l{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700}
+    .nbadge{background:rgba(255,255,255,.2);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px}
+    .nav-r{display:flex;align-items:center;gap:14px}
+    .nav-r a{color:#fff;text-decoration:none;font-size:13px;opacity:.85}
+    #logoutBtn{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:6px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600}
+    #sosBanner{display:none;background:linear-gradient(90deg,var(--red),var(--rd));color:#fff;text-align:center;padding:10px;font-weight:600;font-size:14px;animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.8}}
 
     /* LOGIN */
-    #loginGate {
-      display: flex; align-items: center; justify-content: center;
-      min-height: calc(100vh - 58px);
-    }
-    .login-card {
-      background: white; border-radius: 14px; padding: 40px 36px;
-      width: 360px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); text-align: center;
-    }
-    .login-card h2 { font-size: 22px; color: var(--red); margin-bottom: 6px; }
-    .login-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
-    .login-card input {
-      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
-      border-radius: 8px; font-size: 14px; margin-bottom: 14px; outline: none;
-    }
-    .login-card input:focus { border-color: var(--red); }
-    .login-card button {
-      width: 100%; background: var(--red); color: white; border: none;
-      padding: 12px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer;
-    }
-    .login-card button:hover { background: var(--red-dark); }
-    #loginError { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
+    #loginGate{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 60px)}
+    .lcard{background:#fff;border-radius:20px;padding:48px 40px;width:380px;box-shadow:0 8px 40px rgba(0,0,0,.1);text-align:center}
+    .lcard h2{font-size:24px;font-weight:700;color:var(--red);margin:12px 0 6px}
+    .lcard p{font-size:14px;color:var(--muted);margin-bottom:24px}
+    .lcard input{width:100%;padding:13px 16px;border:2px solid var(--border);border-radius:10px;font-size:15px;margin-bottom:14px;outline:none;font-family:inherit}
+    .lcard input:focus{border-color:var(--red)}
+    .lcard button{width:100%;background:var(--red);color:#fff;border:none;padding:13px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+    .lcard button:hover{background:var(--rd)}
+    #loginError{color:var(--red);font-size:13px;margin-top:10px;display:none}
 
     /* DASHBOARD */
-    #dashboard { display: none; padding: 28px 32px; max-width: 1200px; margin: 0 auto; }
-    h1.page-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
-    h1.page-title span { color: var(--red); }
+    #dashboard{display:none;padding:28px 32px;max-width:1200px;margin:0 auto}
+    .ptitle{font-size:24px;font-weight:700;margin-bottom:22px;letter-spacing:-.5px}
+    .ptitle span{color:var(--red)}
 
     /* STATS */
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
-    .stat-card {
-      background: white; border-radius: 12px; padding: 18px 20px;
-      border: 1px solid var(--border); border-left: 4px solid var(--red);
-    }
-    .stat-card.green { border-left-color: var(--green); }
-    .stat-card.amber { border-left-color: var(--amber); }
-    .stat-card.blue  { border-left-color: #2471a3; }
-    .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
-    .stat-value { font-size: 30px; font-weight: 800; color: var(--text); line-height: 1; }
-    .stat-sub   { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-    .stat-card.green .stat-value { color: var(--green); }
-    .stat-card.amber .stat-value { color: var(--amber); }
-    .stat-card.blue  .stat-value { color: #2471a3; }
+    .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+    .sc{background:#fff;border-radius:16px;padding:22px 24px;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+    .sc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--red)}
+    .sc.g::before{background:var(--green)}.sc.a::before{background:var(--amber)}.sc.b::before{background:var(--blue)}
+    .si{font-size:26px;margin-bottom:8px}
+    .sl{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:600}
+    .sv{font-size:36px;font-weight:800;line-height:1;letter-spacing:-1px}
+    .ss{font-size:12px;color:var(--muted);margin-top:4px}
+    .sc.g .sv{color:var(--green)}.sc.a .sv{color:var(--amber)}.sc.b .sv{color:var(--blue)}
 
-    /* ACTION BAR */
-    .action-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 12px 20px; border-bottom: 1px solid var(--border); }
-    .action-bar input, .action-bar select {
-      padding: 9px 14px; border: 1.5px solid var(--border); border-radius: 8px;
-      font-size: 13px; outline: none; background: white;
-    }
-    .action-bar input:focus, .action-bar select:focus { border-color: var(--red); }
-    .action-bar input { width: 220px; }
-    .btn { padding: 9px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
-    .btn-outline { background: white; border: 1.5px solid var(--border); color: var(--text); }
-    .btn-outline:hover { border-color: var(--red); color: var(--red); }
-    .btn-red { background: var(--red); color: white; }
-    .btn-red:hover { background: var(--red-dark); }
-    .btn-green { background: var(--green); color: white; }
-    .btn-green:hover { background: #166437; }
+    /* CHARTS */
+    .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+    .cc{background:#fff;border-radius:16px;padding:22px 24px;border:1px solid var(--border)}
+    .cc h3{font-size:14px;font-weight:700;margin-bottom:16px}
+    .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .bar-lbl{font-size:12px;font-weight:700;width:32px}
+    .bar-track{flex:1;height:10px;background:var(--bg);border-radius:99px;overflow:hidden}
+    .bar-fill{height:100%;background:var(--red);border-radius:99px;transition:width .8s}
+    .bar-n{font-size:12px;color:var(--muted);font-weight:600;width:20px;text-align:right}
+    .crow{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:8px;margin-bottom:6px}
+    .cn{font-size:13px;font-weight:600;text-transform:capitalize}
+    .cc-badge{font-size:12px;background:var(--rm);color:var(--red);padding:2px 10px;border-radius:20px;font-weight:700}
 
     /* SECTION */
-    .section { background: white; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 24px; overflow: hidden; }
-    .section-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px; border-bottom: 1px solid var(--border); background: #fdfcfc;
-    }
-    .section-header h2 { font-size: 15px; font-weight: 700; }
-    .count-badge { font-size: 11px; background: var(--red-light); color: var(--red); padding: 3px 10px; border-radius: 20px; font-weight: 700; }
+    .sec{background:#fff;border-radius:16px;border:1px solid var(--border);margin-bottom:24px;overflow:hidden}
+    .sec-h{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border)}
+    .sec-h h2{font-size:15px;font-weight:700}
+    .hr{display:flex;align-items:center;gap:10px}
+    .cbadge{font-size:11px;background:var(--rl);color:var(--red);padding:4px 12px;border-radius:20px;font-weight:700}
+    .sos-b{background:var(--red);color:#fff;animation:pulse 1.5s infinite}
+    .abar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 22px;border-bottom:1px solid var(--border);background:#fdfcfc}
+    .abar input,.abar select{padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none;background:#fff;font-family:inherit}
+    .abar input:focus,.abar select:focus{border-color:var(--red)}
+    .abar input{width:220px}
+    .btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit}
+    .btn-o{background:#fff;border:1.5px solid var(--border);color:var(--text)}
+    .btn-o:hover{border-color:var(--red);color:var(--red)}
+    .btn-g{background:var(--green);color:#fff}
+    .btn-g:hover{background:#0a5e3c}
 
     /* TABLE */
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    thead th {
-      background: #fafafa; text-align: left; padding: 10px 16px;
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.5px; color: var(--text-muted); border-bottom: 1px solid var(--border);
-    }
-    tbody td { padding: 11px 16px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover { background: #fdf6f5; }
-
-    .blood-badge {
-      display: inline-block; background: var(--red-light); color: var(--red);
-      font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; min-width: 36px; text-align: center;
-    }
-    .status-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
-    .status-avail   { background: var(--green-light); color: var(--green); }
-    .status-unavail { background: var(--red-light);   color: var(--red); }
-
-    .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-    .dot-green { background: var(--green); }
-    .dot-red   { background: var(--red); }
-
-    .action-cell { display: flex; gap: 6px; }
-    .tbl-btn {
-      padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border);
-      font-size: 11px; font-weight: 600; cursor: pointer; background: white;
-    }
-    .tbl-btn:hover { border-color: var(--red); color: var(--red); }
-    .tbl-btn-del { color: var(--red); border-color: var(--red-light); }
-    .tbl-btn-del:hover { background: var(--red); color: white; }
-    .tbl-btn-res { color: var(--green); border-color: var(--green-light); }
-    .tbl-btn-res:hover { background: var(--green); color: white; }
-
-    footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-muted); }
-
-    @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      #dashboard { padding: 16px; }
-      .action-bar input { width: 100%; }
-    }
+    .tw{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    thead th{background:#fafaf9;text-align:left;padding:11px 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);border-bottom:1px solid var(--border)}
+    tbody td{padding:12px 18px;border-bottom:1px solid #f5f0ed;vertical-align:middle}
+    tbody tr:last-child td{border-bottom:none}
+    tbody tr:hover{background:#fdf8f7}
+    .bb{display:inline-block;background:var(--rl);color:var(--red);font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;min-width:38px;text-align:center}
+    .sb{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px}
+    .av{background:var(--gl);color:var(--green)}.un{background:var(--rl);color:var(--red)}
+    .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+    .dg{background:var(--green)}.dr{background:var(--red)}
+    .ac{display:flex;gap:6px}
+    .tb{padding:5px 11px;border-radius:6px;border:1.5px solid var(--border);font-size:11px;font-weight:600;cursor:pointer;background:#fff;font-family:inherit}
+    .tb:hover{border-color:var(--red);color:var(--red)}
+    .tb-d{color:var(--red);border-color:var(--rm)}.tb-d:hover{background:var(--red);color:#fff;border-color:var(--red)}
+    .tb-r{color:var(--green);border-color:#b3e8d3}.tb-r:hover{background:var(--green);color:#fff}
+    .ta{font-size:11px;color:var(--muted)}
+    .nd{text-align:center;padding:40px;color:var(--muted);font-size:14px}
+    footer{text-align:center;padding:28px;font-size:12px;color:var(--muted)}
+    @media(max-width:900px){.sgrid{grid-template-columns:repeat(2,1fr)}.cgrid{grid-template-columns:1fr}#dashboard{padding:16px}.abar input{width:100%}}
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-left">
-    🩸 BloodSOS
-    <span class="nav-badge">ADMIN</span>
-  </div>
-  <div class="nav-right">
+  <div class="nav-l">🩸 BloodSOS <span class="nbadge">ADMIN</span></div>
+  <div class="nav-r">
     <a href="index.html">← Home</a>
     <button id="logoutBtn" onclick="logout()">Logout</button>
   </div>
 </nav>
 
-<!-- LOGIN GATE -->
+<div id="sosBanner">🚨 ACTIVE SOS REQUESTS NEED ATTENTION — Scroll down to view</div>
+
 <div id="loginGate">
-  <div class="login-card">
-    <h2>🔐 Admin Login</h2>
-    <p>Enter the admin password to access the dashboard</p>
-    <input type="password" id="adminPass" placeholder="Enter admin password"
-      onkeydown="if(event.key==='Enter') checkLogin()" />
+  <div class="lcard">
+    <div style="font-size:48px">🔐</div>
+    <h2>Admin Login</h2>
+    <p>Enter the admin password to continue</p>
+    <input type="password" id="adminPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkLogin()"/>
     <button onclick="checkLogin()">Login to Dashboard</button>
-    <p id="loginError">❌ Wrong password. Please try again.</p>
+    <p id="loginError">❌ Wrong password. Try again.</p>
   </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="dashboard">
-  <h1 class="page-title">Admin <span>Dashboard</span></h1>
+  <h1 class="ptitle">Admin <span>Dashboard</span></h1>
 
-  <!-- STATS -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-label">Total Donors</div>
-      <div class="stat-value" id="statTotal">–</div>
-      <div class="stat-sub">registered in system</div>
-    </div>
-    <div class="stat-card green">
-      <div class="stat-label">Available Now</div>
-      <div class="stat-value" id="statAvail">–</div>
-      <div class="stat-sub" id="statAvailPct">ready to donate</div>
-    </div>
-    <div class="stat-card amber">
-      <div class="stat-label">SOS Requests</div>
-      <div class="stat-value" id="statSOS">–</div>
-      <div class="stat-sub">emergency alerts</div>
-    </div>
-    <div class="stat-card blue">
-      <div class="stat-label">Cities Covered</div>
-      <div class="stat-value" id="statCities">–</div>
-      <div class="stat-sub">unique cities</div>
-    </div>
+  <div class="sgrid">
+    <div class="sc"><div class="si">👥</div><div class="sl">Total Donors</div><div class="sv" id="statTotal">–</div><div class="ss">registered</div></div>
+    <div class="sc g"><div class="si">✅</div><div class="sl">Available</div><div class="sv" id="statAvail">–</div><div class="ss" id="statPct">ready to donate</div></div>
+    <div class="sc a"><div class="si">🚨</div><div class="sl">SOS Requests</div><div class="sv" id="statSOS">–</div><div class="ss">emergencies</div></div>
+    <div class="sc b"><div class="si">🏙️</div><div class="sl">Cities</div><div class="sv" id="statCities">–</div><div class="ss">covered</div></div>
   </div>
 
-  <!-- DONORS TABLE -->
-  <div class="section">
-    <div class="section-header">
+  <div class="cgrid">
+    <div class="cc"><h3>🩸 Donors by Blood Group</h3><div id="bloodChart"><p style="color:var(--muted);font-size:13px">Loading…</p></div></div>
+    <div class="cc"><h3>🏙️ Top Cities</h3><div id="cityChart"><p style="color:var(--muted);font-size:13px">Loading…</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h">
       <h2>🩸 Registered Donors</h2>
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="count-badge" id="donorCount">Loading…</span>
-        <button class="btn btn-green" onclick="exportCSV()">⬇ Export CSV</button>
-      </div>
+      <div class="hr"><span class="cbadge" id="donorCount">Loading…</span><button class="btn btn-g" onclick="exportCSV()">⬇ Export CSV</button></div>
     </div>
-    <div class="action-bar">
-      <input type="text" id="searchInput" placeholder="🔍 Search name, city, phone…" oninput="filterDonors()" />
+    <div class="abar">
+      <input type="text" id="searchInput" placeholder="🔍 Search name, city, phone…" oninput="filterDonors()"/>
       <select id="filterBlood" onchange="filterDonors()">
         <option value="">All Blood Groups</option>
-        <option>A+</option><option>A-</option>
-        <option>B+</option><option>B-</option>
-        <option>O+</option><option>O-</option>
-        <option>AB+</option><option>AB-</option>
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
       </select>
       <select id="filterStatus" onchange="filterDonors()">
         <option value="">All Status</option>
         <option value="available">Available</option>
         <option value="unavailable">Unavailable</option>
       </select>
-      <button class="btn btn-outline" onclick="clearFilters()">Clear</button>
+      <button class="btn btn-o" onclick="clearFilters()">Clear</button>
     </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th><th>Name</th><th>Age</th><th>Blood Group</th>
-            <th>City</th><th>Phone</th><th>Status</th>
-            <th>Last Donated</th><th>Donations</th><th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="donorTableBody">
-          <tr><td colspan="10" style="text-align:center;padding:28px;color:#999">Loading donors…</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="tw"><table>
+      <thead><tr><th>#</th><th>Name</th><th>Age</th><th>Blood</th><th>City</th><th>Phone</th><th>Status</th><th>Last Donated</th><th>Donations</th><th>Registered</th><th>Actions</th></tr></thead>
+      <tbody id="donorTableBody"><tr><td colspan="11" class="nd">Loading donors…</td></tr></tbody>
+    </table></div>
   </div>
 
-  <!-- SOS TABLE -->
-  <div class="section">
-    <div class="section-header">
+  <div class="sec">
+    <div class="sec-h">
       <h2>🚨 SOS Emergency Requests</h2>
-      <span class="count-badge" id="sosCount">Loading…</span>
+      <span class="cbadge" id="sosCount">Loading…</span>
     </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th><th>Patient Name</th><th>Blood Group</th><th>Hospital</th>
-            <th>City</th><th>Contact</th><th>Notes</th><th>Time</th><th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="sosTableBody">
-          <tr><td colspan="9" style="text-align:center;padding:28px;color:#999">Loading SOS requests…</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="tw"><table>
+      <thead><tr><th>#</th><th>Patient</th><th>Blood</th><th>Hospital</th><th>City</th><th>Contact</th><th>Notes</th><th>Time</th><th>Actions</th></tr></thead>
+      <tbody id="sosTableBody"><tr><td colspan="9" class="nd">Loading…</td></tr></tbody>
+    </table></div>
   </div>
 
-  <footer>BloodSOS &copy; 2024 — Admin Panel &nbsp;❤️&nbsp; Saving Lives Together</footer>
+  <footer>BloodSOS &copy; 2024 — Admin Panel ❤️ Saving Lives Together</footer>
 </div>
 
-<!-- FIREBASE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-  // ── PASTE YOUR FIREBASE CONFIG HERE ──
   const firebaseConfig = {
     apiKey: "AIzaSyDlFmq0PwGCC3S_e8jaocIGL3Rw6Ef6buM",
     authDomain: "bloodsos-da62b.firebaseapp.com",
@@ -302,188 +195,163 @@
   };
 
   const app = initializeApp(firebaseConfig);
-  const db  = getDatabase(app);
+  const db = getDatabase(app);
+  const ADMIN_PASSWORD = "admin123";
+  let allDonors = [], allSOS = [];
 
-  const ADMIN_PASSWORD = "admin123"; // change this to your own password!
+  function timeAgo(ts) {
+    if (!ts) return "–";
+    const d = Date.now() - ts, m = Math.floor(d/60000), h = Math.floor(d/3600000), dy = Math.floor(d/86400000);
+    return m < 1 ? "Just now" : m < 60 ? `${m}m ago` : h < 24 ? `${h}h ago` : `${dy}d ago`;
+  }
 
-  let allDonors = [];
-  let allSOS    = [];
-
-  // ── LOGIN / LOGOUT ──
-  window.checkLogin = function () {
+  window.checkLogin = function() {
     if (document.getElementById("adminPass").value === ADMIN_PASSWORD) {
-      document.getElementById("loginGate").style.display  = "none";
-      document.getElementById("dashboard").style.display  = "block";
+      document.getElementById("loginGate").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
       loadData();
     } else {
       document.getElementById("loginError").style.display = "block";
     }
   };
 
-  window.logout = function () {
+  window.logout = function() {
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("loginGate").style.display = "flex";
     document.getElementById("adminPass").value = "";
   };
 
-  // ── LOAD DATA ──
   function loadData() {
-    // Donors
-    onValue(ref(db, "donors"), snapshot => {
+    onValue(ref(db, "donors"), snap => {
       allDonors = [];
-      if (snapshot.exists()) {
-        snapshot.forEach(child => allDonors.push({ id: child.key, ...child.val() }));
-      }
-      renderDonors(allDonors);
-      updateStats();
+      if (snap.exists()) snap.forEach(c => allDonors.push({ id: c.key, ...c.val() }));
+      renderDonors(allDonors); updateStats(); renderCharts();
     });
-
-    // SOS
-    onValue(ref(db, "sos"), snapshot => {
+    onValue(ref(db, "sos"), snap => {
       allSOS = [];
-      if (snapshot.exists()) {
-        snapshot.forEach(child => allSOS.push({ id: child.key, ...child.val() }));
-      }
+      if (snap.exists()) snap.forEach(c => allSOS.push({ id: c.key, ...c.val() }));
       renderSOS(allSOS);
-      document.getElementById("statSOS").textContent  = allSOS.length;
+      document.getElementById("statSOS").textContent = allSOS.length;
       document.getElementById("sosCount").textContent = allSOS.length + " requests";
+      const banner = document.getElementById("sosBanner");
+      const badge = document.getElementById("sosCount");
+      if (allSOS.length > 0) { banner.style.display = "block"; badge.classList.add("sos-b"); }
+      else { banner.style.display = "none"; badge.classList.remove("sos-b"); }
     });
   }
 
-  // ── STATS ──
   function updateStats() {
-    const total  = allDonors.length;
-    const avail  = allDonors.filter(d => (d.availability || "").toLowerCase() === "available").length;
+    const total = allDonors.length;
+    const avail = allDonors.filter(d => (d.availability || d.status || "").toLowerCase() === "available").length;
     const cities = new Set(allDonors.map(d => (d.city || "").toLowerCase().trim()).filter(Boolean)).size;
-    const pct    = total ? Math.round((avail / total) * 100) : 0;
-
-    document.getElementById("statTotal").textContent    = total;
-    document.getElementById("statAvail").textContent    = avail;
-    document.getElementById("statAvailPct").textContent = pct + "% of total donors";
-    document.getElementById("statCities").textContent   = cities;
-    document.getElementById("donorCount").textContent   = total + " donors";
+    document.getElementById("statTotal").textContent = total;
+    document.getElementById("statAvail").textContent = avail;
+    document.getElementById("statPct").textContent = total ? Math.round(avail/total*100) + "% of total" : "ready to donate";
+    document.getElementById("statCities").textContent = cities;
+    document.getElementById("donorCount").textContent = total + " donors";
   }
 
-  // ── RENDER DONORS ──
+  function renderCharts() {
+    const bgs = ["A+","A-","B+","B-","O+","O-","AB+","AB-"];
+    const counts = {}; bgs.forEach(b => counts[b] = 0);
+    allDonors.forEach(d => { if (counts[d.bloodGroup] !== undefined) counts[d.bloodGroup]++; });
+    const max = Math.max(...Object.values(counts), 1);
+    document.getElementById("bloodChart").innerHTML = bgs.map(bg => `
+      <div class="bar-row">
+        <span class="bar-lbl">${bg}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${Math.round(counts[bg]/max*100)}%"></div></div>
+        <span class="bar-n">${counts[bg]}</span>
+      </div>`).join("");
+    const cm = {}; allDonors.forEach(d => { const c = (d.city||"unknown").toLowerCase().trim(); cm[c]=(cm[c]||0)+1; });
+    const top = Object.entries(cm).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    document.getElementById("cityChart").innerHTML = top.length
+      ? top.map(([c,n]) => `<div class="crow"><span class="cn">📍 ${c}</span><span class="cc-badge">${n} donor${n>1?"s":""}</span></div>`).join("")
+      : `<p style="color:var(--muted);font-size:13px">No city data yet.</p>`;
+  }
+
   function renderDonors(list) {
     const tbody = document.getElementById("donorTableBody");
-    if (!list.length) {
-      tbody.innerHTML = `<tr><td colspan="10" style="text-align:center;padding:28px;color:#999">No donors found.</td></tr>`;
-      return;
-    }
+    if (!list.length) { tbody.innerHTML = `<tr><td colspan="11" class="nd">No donors found.</td></tr>`; return; }
     tbody.innerHTML = list.map((d, i) => {
-      const isAvail = (d.availability || "").toLowerCase() === "available";
-      const badge   = isAvail
-        ? `<span class="status-badge status-avail"><span class="dot dot-green"></span>Available</span>`
-        : `<span class="status-badge status-unavail"><span class="dot dot-red"></span>Unavailable</span>`;
-      return `
-        <tr>
-          <td style="color:#999;font-size:12px">${i + 1}</td>
-          <td><strong>${d.name || "–"}</strong></td>
-          <td>${d.age || "–"}</td>
-          <td><span class="blood-badge">${d.bloodGroup || "–"}</span></td>
-          <td>${d.city || "–"}</td>
-          <td>${d.phone || "–"}</td>
-          <td>${badge}</td>
-          <td>${d.lastDonated || "–"}</td>
-          <td>${d.totalDonations || 0}</td>
-          <td>
-            <div class="action-cell">
-              <button class="tbl-btn" onclick="window.open('tel:${d.phone}')">📞 Call</button>
-              <button class="tbl-btn tbl-btn-del" onclick="deleteDonor('${d.id}', '${(d.name || "").replace(/'/g, "\\'")}')">🗑 Delete</button>
-            </div>
-          </td>
-        </tr>`;
+      const ok = (d.availability || d.status || "").toLowerCase() === "available";
+      const badge = ok
+        ? `<span class="sb av"><span class="dot dg"></span>Available</span>`
+        : `<span class="sb un"><span class="dot dr"></span>Unavailable</span>`;
+      return `<tr>
+        <td style="color:var(--muted);font-size:12px">${i+1}</td>
+        <td><strong>${d.name||"–"}</strong></td>
+        <td>${d.age||"–"}</td>
+        <td><span class="bb">${d.bloodGroup||"–"}</span></td>
+        <td style="text-transform:capitalize">${d.city||"–"}</td>
+        <td>${d.phone||"–"}</td>
+        <td>${badge}</td>
+        <td>${d.lastDonated||"–"}</td>
+        <td style="text-align:center;font-weight:700;color:var(--red)">${d.totalDonations||0} 🩸</td>
+        <td><span class="ta">${d.timestamp ? timeAgo(d.timestamp) : "–"}</span></td>
+        <td><div class="ac">
+          <button class="tb" onclick="window.open('tel:${d.phone}')">📞 Call</button>
+          <button class="tb tb-d" onclick="deleteDonor('${d.id}','${(d.name||"").replace(/'/g,"\\'")}')">🗑 Delete</button>
+        </div></td>
+      </tr>`;
     }).join("");
   }
 
-  // ── RENDER SOS ──
   function renderSOS(list) {
     const tbody = document.getElementById("sosTableBody");
-    if (!list.length) {
-      tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:28px;color:#999">No SOS requests found.</td></tr>`;
-      return;
-    }
-    tbody.innerHTML = list.map((s, i) => {
-      const time = s.timestamp ? new Date(s.timestamp).toLocaleString("en-IN") : (s.time || "–");
-      return `
-        <tr>
-          <td style="color:#999;font-size:12px">${i + 1}</td>
-          <td><strong>${s.patientName || s.name || "–"}</strong></td>
-          <td><span class="blood-badge">${s.bloodGroup || "–"}</span></td>
-          <td>${s.hospital || "–"}</td>
-          <td>${s.city || "–"}</td>
-          <td>${s.contact || s.phone || "–"}</td>
-          <td style="max-width:150px;font-size:12px;color:#555">${s.notes || "–"}</td>
-          <td style="font-size:12px">${time}</td>
-          <td>
-            <div class="action-cell">
-              <button class="tbl-btn" onclick="window.open('tel:${s.contact || s.phone}')">📞 Call</button>
-              <button class="tbl-btn tbl-btn-res" onclick="deleteSOS('${s.id}')">✔ Resolve</button>
-            </div>
-          </td>
-        </tr>`;
-    }).join("");
+    if (!list.length) { tbody.innerHTML = `<tr><td colspan="9" class="nd">✅ No active SOS requests.</td></tr>`; return; }
+    tbody.innerHTML = list.map((s, i) => `<tr style="background:#fff8f8">
+      <td style="color:var(--muted);font-size:12px">${i+1}</td>
+      <td><strong>${s.patientName||s.name||"–"}</strong></td>
+      <td><span class="bb">${s.bloodGroup||"–"}</span></td>
+      <td>${s.hospital||"–"}</td>
+      <td style="text-transform:capitalize">${s.city||"–"}</td>
+      <td>${s.contact||s.phone||"–"}</td>
+      <td style="max-width:140px;font-size:12px;color:var(--muted)">${s.notes||"–"}</td>
+      <td><span class="ta" title="${s.timestamp ? new Date(s.timestamp).toLocaleString('en-IN') : ''}">${timeAgo(s.timestamp)}</span></td>
+      <td><div class="ac">
+        <button class="tb" onclick="window.open('tel:${s.contact||s.phone}')">📞 Call</button>
+        <button class="tb tb-r" onclick="deleteSOS('${s.id}')">✔ Resolve</button>
+      </div></td>
+    </tr>`).join("");
   }
 
-  // ── DELETE DONOR ──
-  window.deleteDonor = function (id, name) {
-    if (confirm(`Delete donor "${name}"? This cannot be undone.`)) {
-      remove(ref(db, "donors/" + id));
-    }
+  window.deleteDonor = function(id, name) {
+    if (confirm(`Delete donor "${name}"? This cannot be undone.`)) remove(ref(db, "donors/" + id));
+  };
+  window.deleteSOS = function(id) {
+    if (confirm("Mark this SOS as resolved?")) remove(ref(db, "sos/" + id));
   };
 
-  // ── DELETE (RESOLVE) SOS ──
-  window.deleteSOS = function (id) {
-    if (confirm("Mark this SOS as resolved and remove it?")) {
-      remove(ref(db, "sos/" + id));
-    }
+  window.filterDonors = function() {
+    const s = document.getElementById("searchInput").value.toLowerCase();
+    const b = document.getElementById("filterBlood").value;
+    const st = document.getElementById("filterStatus").value.toLowerCase();
+    const f = allDonors.filter(d =>
+      (!s || (d.name||"").toLowerCase().includes(s) || (d.city||"").toLowerCase().includes(s) || (d.phone||"").includes(s)) &&
+      (!b || d.bloodGroup === b) &&
+      (!st || (d.availability||d.status||"").toLowerCase() === st)
+    );
+    renderDonors(f);
+    document.getElementById("donorCount").textContent = f.length + " donors";
   };
 
-  // ── FILTER DONORS ──
-  window.filterDonors = function () {
-    const search = document.getElementById("searchInput").value.toLowerCase();
-    const blood  = document.getElementById("filterBlood").value;
-    const status = document.getElementById("filterStatus").value.toLowerCase();
-
-    const filtered = allDonors.filter(d => {
-      const matchSearch = !search ||
-        (d.name  || "").toLowerCase().includes(search) ||
-        (d.city  || "").toLowerCase().includes(search) ||
-        (d.phone || "").includes(search);
-      const matchBlood  = !blood  || d.bloodGroup === blood;
-      const matchStatus = !status || (d.availability || "").toLowerCase() === status;
-      return matchSearch && matchBlood && matchStatus;
-    });
-
-    renderDonors(filtered);
-    document.getElementById("donorCount").textContent = filtered.length + " donors";
-  };
-
-  window.clearFilters = function () {
-    document.getElementById("searchInput").value  = "";
-    document.getElementById("filterBlood").value  = "";
+  window.clearFilters = function() {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("filterBlood").value = "";
     document.getElementById("filterStatus").value = "";
     renderDonors(allDonors);
     document.getElementById("donorCount").textContent = allDonors.length + " donors";
   };
 
-  // ── EXPORT CSV ──
-  window.exportCSV = function () {
+  window.exportCSV = function() {
     if (!allDonors.length) { alert("No donors to export."); return; }
-    const headers = ["Name","Age","Blood Group","City","Phone","Status","Last Donated","Total Donations"];
-    const rows = allDonors.map(d => [
-      d.name, d.age, d.bloodGroup, d.city, d.phone,
-      d.availability, d.lastDonated, d.totalDonations || 0
-    ].map(v => `"${v || ""}"`).join(","));
-    const csv  = [headers.join(","), ...rows].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement("a");
-    a.href = url; a.download = "bloodsos_donors.csv"; a.click();
-    URL.revokeObjectURL(url);
+    const h = ["Name","Age","Blood Group","City","Phone","Status","Last Donated","Total Donations"];
+    const r = allDonors.map(d => [d.name,d.age,d.bloodGroup,d.city,d.phone,d.availability||d.status,d.lastDonated,d.totalDonations||0].map(v=>`"${v||""}"`).join(","));
+    const csv = [h.join(","),...r].join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+    a.download = "bloodsos_donors.csv"; a.click();
   };
 </script>
-
 </body>
 </html>
