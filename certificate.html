@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donor Certificate - BloodSOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">🩸 BloodSOS</nav>
+
+<div class="cert-container">
+
+  <!-- FORM -->
+  <div class="cert-form">
+    <h2>🏆 Generate Your Certificate</h2>
+    <p>Fill in your details to get your Blood Donor Hero certificate!</p>
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="certName" placeholder="Enter your full name" />
+    </div>
+    <div class="form-group">
+      <label>Blood Group</label>
+      <select id="certBlood">
+        <option value="">-- Select Blood Group --</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Date of Donation</label>
+      <input type="date" id="certDate" />
+    </div>
+
+    <button class="submit-btn" onclick="generateCertificate()">🏆 Generate Certificate</button>
+    <p id="certError" style="color:#d92b3a;font-size:13px;margin-top:10px;display:none">⚠️ Please fill in all fields.</p>
+  </div>
+
+  <!-- CERTIFICATE PREVIEW -->
+  <div class="cert-preview-wrap" id="certPreviewWrap">
+    <div id="certificate">
+      <div class="cert-watermark">BLOODSOS</div>
+      <div class="cert-logo">🩸</div>
+      <div class="cert-brand">BloodSOS</div>
+      <div class="cert-title">Certificate of Appreciation</div>
+      <div class="cert-heading">Blood Donor<br>Hero Award</div>
+      <div class="cert-presented">This certificate is proudly presented to</div>
+      <div class="cert-name" id="certDisplayName">–</div>
+      <div class="cert-body">
+        For voluntarily donating <strong id="certDisplayBlood">–</strong> blood on
+        <strong id="certDisplayDate">–</strong> through the BloodSOS platform and
+        contributing to saving lives in our community.
+        <br><br>
+        <em>"Every drop counts. You are a true hero." 🦸</em>
+      </div>
+      <div class="cert-badge">🩸 Certified Blood Donor Hero</div>
+      <div class="cert-footer">
+        <div class="cert-sig">
+          <div class="cert-sig-line"></div>
+          <p>BloodSOS Team</p>
+        </div>
+        <div class="cert-date-box">
+          <div class="date-val" id="certDisplayDate2">–</div>
+          <p>Date of Donation</p>
+        </div>
+        <div class="cert-sig">
+          <div class="cert-sig-line"></div>
+          <p>Authorized Signature</p>
+        </div>
+      </div>
+      <div class="cert-id" id="certID"></div>
+    </div>
+
+    <button class="download-btn" onclick="downloadCertificate()">⬇️ Download Certificate</button>
+    <div class="share-row">
+      <button class="share-btn share-wa" onclick="shareWhatsApp()">💬 Share on WhatsApp</button>
+    </div>
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </div>
+
+</div>
+
+<div class="footer">BloodSOS © 2024 — Saving Lives Together ❤️</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+  window.generateCertificate = function() {
+    const name  = document.getElementById("certName").value.trim();
+    const blood = document.getElementById("certBlood").value;
+    const date  = document.getElementById("certDate").value;
+    const err   = document.getElementById("certError");
+
+    if (!name || !blood || !date) {
+      err.style.display = "block"; return;
+    }
+    err.style.display = "none";
+
+    const formatted = new Date(date).toLocaleDateString("en-IN", {
+      day: "numeric", month: "long", year: "numeric"
+    });
+
+    document.getElementById("certDisplayName").textContent  = name;
+    document.getElementById("certDisplayBlood").textContent = blood;
+    document.getElementById("certDisplayDate").textContent  = formatted;
+    document.getElementById("certDisplayDate2").textContent = formatted;
+
+    const id = "BSOS-" + Date.now().toString(36).toUpperCase();
+    document.getElementById("certID").textContent = "Certificate ID: " + id;
+
+    document.getElementById("certPreviewWrap").style.display = "block";
+    document.getElementById("certPreviewWrap").scrollIntoView({ behavior: "smooth" });
+  };
+
+  window.downloadCertificate = function() {
+    const name = document.getElementById("certName").value.trim() || "donor";
+    const cert = document.getElementById("certificate");
+
+    html2canvas(cert, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
+      const link = document.createElement("a");
+      link.download = `BloodSOS_Certificate_${name.replace(/\s+/g, "_")}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  };
+
+  window.shareWhatsApp = function() {
+    const name  = document.getElementById("certName").value.trim();
+    const blood = document.getElementById("certBlood").value;
+    const msg   = encodeURIComponent(
+      `🩸 I just donated ${blood} blood through BloodSOS and received my Blood Donor Hero Certificate! 🏆\n\nJoin me in saving lives → bloodsos.vercel.app`
+    );
+    window.open(`https://wa.me/?text=${msg}`, "_blank");
+  };
+</script>
+
+</body>
+</html>
