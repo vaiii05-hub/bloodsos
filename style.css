@@ -85,6 +85,24 @@ body {
   color: #cc0000;
 }
 
+.btn-outline-white {
+  display: inline-block;
+  margin-top: 0;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 18px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-outline-white:hover {
+  background: white;
+  color: #d92b3a;
+}
+
 /* Pulse Animation for SOS */
 @keyframes pulse {
   0% { transform: scale(1); }
@@ -257,20 +275,239 @@ body {
   color: white;
 }
 
-.btn-outline-white {
-  display: inline-block;
-  margin-top: 0;
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 18px 35px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
+/* ── CERTIFICATE PAGE ── */
+.cert-container {
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-.btn-outline-white:hover {
+.cert-form {
   background: white;
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid #e8e2de;
+  margin-bottom: 28px;
+}
+
+.cert-form h2 {
   color: #d92b3a;
+  font-size: 22px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.cert-form p {
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.cert-preview-wrap {
+  display: none;
+  margin-bottom: 28px;
+}
+
+#certificate {
+  background: white;
+  border: 12px solid #d92b3a;
+  border-radius: 12px;
+  padding: 40px 36px;
+  text-align: center;
+  position: relative;
+  font-family: Georgia, serif;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+#certificate::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid #ffd6d9;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.cert-logo {
+  font-size: 42px;
+  margin-bottom: 4px;
+}
+
+.cert-brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: #d92b3a;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.cert-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.cert-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1210;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cert-presented {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.cert-name {
+  font-size: 34px;
+  font-weight: 700;
+  color: #d92b3a;
+  border-bottom: 2px solid #ffd6d9;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  font-family: Georgia, serif;
+}
+
+.cert-body {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cert-body strong {
+  color: #d92b3a;
+}
+
+.cert-badge {
+  display: inline-block;
+  background: #fff0f1;
+  border: 2px solid #d92b3a;
+  color: #d92b3a;
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f0ebe8;
+}
+
+.cert-sig {
+  text-align: center;
+}
+
+.cert-sig-line {
+  width: 100px;
+  border-bottom: 1.5px solid #333;
+  margin-bottom: 4px;
+}
+
+.cert-sig p {
+  font-size: 11px;
+  color: #888;
+}
+
+.cert-date-box {
+  text-align: center;
+}
+
+.cert-date-box .date-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1210;
+}
+
+.cert-date-box p {
+  font-size: 11px;
+  color: #888;
+}
+
+.cert-watermark {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 80px;
+  opacity: 0.04;
+  pointer-events: none;
+  font-weight: 900;
+  color: #d92b3a;
+  white-space: nowrap;
+}
+
+.cert-id {
+  font-size: 10px;
+  color: #ccc;
+  margin-top: 12px;
+}
+
+.download-btn {
+  width: 100%;
+  padding: 14px;
+  background: #d92b3a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 16px;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.download-btn:hover {
+  background: #a81e2a;
+}
+
+.share-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.share-btn {
+  flex: 1;
+  padding: 11px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.share-wa {
+  background: #25d366;
+  color: white;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  color: #d92b3a;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
 }
