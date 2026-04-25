@@ -11,88 +11,86 @@
 
     .edu-hero {
       background: linear-gradient(135deg, #d92b3a, #a81e2a);
-      color: white; text-align: center; padding: 60px 20px 50px;
+      color: white; text-align: center; padding: 50px 20px 40px;
     }
-    .edu-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
-    .edu-hero p { font-size: 16px; opacity: 0.9; max-width: 500px; margin: 0 auto; }
+    .edu-hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .edu-hero p { font-size: 15px; opacity: 0.9; }
 
     .edu-stats {
-      display: flex; justify-content: center; gap: 40px;
-      background: white; padding: 28px 20px;
-      border-bottom: 1px solid #e8e2de;
-      flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 0;
+      background: white; border-bottom: 1px solid #e8e2de; flex-wrap: wrap;
     }
-    .edu-stat { text-align: center; }
-    .edu-stat .num { font-size: 32px; font-weight: 800; color: #d92b3a; }
-    .edu-stat .lbl { font-size: 13px; color: #888; margin-top: 4px; }
+    .edu-stat {
+      text-align: center; padding: 20px 32px;
+      border-right: 1px solid #e8e2de;
+    }
+    .edu-stat:last-child { border-right: none; }
+    .edu-stat .num { font-size: 26px; font-weight: 800; color: #d92b3a; }
+    .edu-stat .lbl { font-size: 12px; color: #888; margin-top: 2px; }
 
-    .edu-container { max-width: 860px; margin: 0 auto; padding: 40px 20px; }
+    .edu-container { max-width: 820px; margin: 0 auto; padding: 32px 20px; }
 
-    .edu-section { background: white; border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #e8e2de; }
-    .edu-section h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .edu-section { background: white; border-radius: 14px; padding: 26px 28px; margin-bottom: 20px; border: 1px solid #e8e2de; }
+    .edu-section h2 { font-size: 17px; font-weight: 700; margin-bottom: 16px; }
 
-    /* WHY DONATE */
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .why-card { background: #fff0f1; border-radius: 12px; padding: 20px 16px; text-align: center; }
-    .why-card .icon { font-size: 32px; margin-bottom: 10px; }
-    .why-card h4 { font-size: 14px; font-weight: 700; color: #d92b3a; margin-bottom: 6px; }
-    .why-card p { font-size: 13px; color: #666; line-height: 1.5; }
+    /* WHY DONATE — horizontal cards */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .why-card { background: #fff0f1; border-radius: 10px; padding: 16px; text-align: center; }
+    .why-card .icon { font-size: 26px; margin-bottom: 6px; }
+    .why-card h4 { font-size: 13px; font-weight: 700; color: #d92b3a; margin-bottom: 4px; }
+    .why-card p { font-size: 12px; color: #666; line-height: 1.4; }
 
-    /* ELIGIBILITY */
-    .elig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .elig-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: #f7f4f2; border-radius: 10px; }
-    .elig-icon { font-size: 20px; flex-shrink: 0; }
-    .elig-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
-    .elig-item p { font-size: 12px; color: #666; }
-    .elig-item.no { background: #fff0f1; }
-    .elig-item.no h4 { color: #d92b3a; }
+    /* ELIGIBILITY — two columns */
+    .elig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .elig-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #f7f4f2; border-radius: 8px; font-size: 13px; }
+    .elig-item.no { background: #fff0f1; color: #d92b3a; }
 
-    /* BLOOD FACTS */
-    .facts-list { display: flex; flex-direction: column; gap: 12px; }
-    .fact-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: #f7f4f2; border-radius: 10px; border-left: 4px solid #d92b3a; }
-    .fact-num { font-size: 20px; font-weight: 800; color: #d92b3a; min-width: 28px; }
-    .fact-item p { font-size: 14px; color: #333; line-height: 1.5; }
+    /* COMPATIBILITY TABLE */
+    .bg-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .bg-table th { background: #d92b3a; color: white; padding: 9px 12px; text-align: left; font-weight: 700; }
+    .bg-table td { padding: 9px 12px; border-bottom: 1px solid #f0ebe8; }
+    .bg-table tr:last-child td { border-bottom: none; }
+    .bg-table tr:hover td { background: #fff0f1; }
+    .bb { display: inline-block; background: #fff0f1; color: #d92b3a; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 5px; }
 
     /* MYTHS */
-    .myth-list { display: flex; flex-direction: column; gap: 14px; }
-    .myth-card { border-radius: 12px; overflow: hidden; border: 1px solid #e8e2de; }
-    .myth-q { background: #fff0f1; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #d92b3a; }
-    .myth-q::before { content: "❌ MYTH: "; }
-    .myth-a { background: #e6f7f0; padding: 12px 16px; font-size: 13px; color: #0d7a4e; }
-    .myth-a::before { content: "✅ FACT: "; font-weight: 700; }
+    .myth-list { display: flex; flex-direction: column; gap: 10px; }
+    .myth-card { border-radius: 10px; overflow: hidden; border: 1px solid #e8e2de; }
+    .myth-q { background: #fff0f1; padding: 10px 14px; font-size: 13px; font-weight: 700; color: #d92b3a; }
+    .myth-q::before { content: "❌ "; }
+    .myth-a { background: #e6f7f0; padding: 10px 14px; font-size: 12px; color: #0d7a4e; }
+    .myth-a::before { content: "✅ "; font-weight: 700; }
 
-    /* BLOOD GROUPS TABLE */
-    .bg-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .bg-table th { background: #d92b3a; color: white; padding: 10px 14px; text-align: left; font-weight: 700; }
-    .bg-table td { padding: 10px 14px; border-bottom: 1px solid #f0ebe8; }
-    .bg-table tr:hover td { background: #fff0f1; }
-    .bg-table tr:last-child td { border-bottom: none; }
-    .bb { display: inline-block; background: #fff0f1; color: #d92b3a; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; }
+    /* STEPS — horizontal */
+    .steps { display: flex; gap: 0; counter-reset: step; }
+    .step { flex: 1; text-align: center; padding: 12px 8px; position: relative; }
+    .step:not(:last-child)::after { content: '→'; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); color: #d92b3a; font-size: 16px; }
+    .step-num { width: 32px; height: 32px; background: #d92b3a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; margin: 0 auto 8px; }
+    .step h4 { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+    .step p { font-size: 11px; color: #666; }
 
-    /* STEPS */
-    .steps { display: flex; flex-direction: column; gap: 0; }
-    .step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #f0ebe8; }
-    .step:last-child { border-bottom: none; }
-    .step-num { width: 36px; height: 36px; background: #d92b3a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
-    .step h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-    .step p { font-size: 13px; color: #666; }
+    /* FACTS — compact */
+    .facts-list { display: flex; flex-direction: column; gap: 8px; }
+    .fact-item { display: flex; gap: 12px; align-items: center; padding: 10px 14px; background: #f7f4f2; border-radius: 8px; border-left: 3px solid #d92b3a; }
+    .fact-num { font-size: 16px; font-weight: 800; color: #d92b3a; min-width: 20px; }
+    .fact-item p { font-size: 13px; color: #333; }
 
     /* CTA */
-    .cta-box { background: linear-gradient(135deg, #d92b3a, #a81e2a); color: white; border-radius: 16px; padding: 36px; text-align: center; margin-bottom: 24px; }
-    .cta-box h2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
-    .cta-box p { opacity: 0.9; margin-bottom: 24px; font-size: 15px; }
+    .cta-box { background: linear-gradient(135deg, #d92b3a, #a81e2a); color: white; border-radius: 14px; padding: 32px; text-align: center; margin-bottom: 20px; }
+    .cta-box h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .cta-box p { opacity: 0.9; margin-bottom: 20px; font-size: 14px; }
     .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .cta-btn { padding: 12px 28px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 14px; }
+    .cta-btn { padding: 11px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; }
     .cta-btn.white { background: white; color: #d92b3a; }
     .cta-btn.outline { background: transparent; color: white; border: 2px solid white; }
 
-    footer { text-align: center; padding: 24px; font-size: 12px; color: #888; }
+    footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
 
-    @media(max-width: 600px) {
-      .why-grid { grid-template-columns: 1fr; }
+    @media(max-width:600px) {
+      .why-grid { grid-template-columns: 1fr 1fr; }
       .elig-grid { grid-template-columns: 1fr; }
-      .edu-stats { gap: 20px; }
-      .edu-hero h1 { font-size: 24px; }
+      .steps { flex-direction: column; }
+      .step:not(:last-child)::after { display: none; }
     }
   </style>
 </head>
@@ -100,18 +98,16 @@
 
 <nav class="navbar">🩸 BloodSOS</nav>
 
-<!-- HERO -->
 <div class="edu-hero">
   <h1>📚 Blood Donation Awareness</h1>
-  <p>Learn why blood donation saves lives and how you can make a difference today</p>
+  <p>Learn why blood donation saves lives and how you can make a difference</p>
 </div>
 
-<!-- STATS BAR -->
 <div class="edu-stats">
   <div class="edu-stat"><div class="num">1 Unit</div><div class="lbl">saves up to 3 lives</div></div>
-  <div class="edu-stat"><div class="num">every 2s</div><div class="lbl">someone needs blood</div></div>
-  <div class="edu-stat"><div class="num">90 days</div><div class="lbl">wait between donations</div></div>
-  <div class="edu-stat"><div class="num">38%</div><div class="lbl">people are eligible to donate</div></div>
+  <div class="edu-stat"><div class="num">Every 2s</div><div class="lbl">someone needs blood</div></div>
+  <div class="edu-stat"><div class="num">90 Days</div><div class="lbl">wait between donations</div></div>
+  <div class="edu-stat"><div class="num">38%</div><div class="lbl">people are eligible</div></div>
 </div>
 
 <div class="edu-container">
@@ -120,36 +116,12 @@
   <div class="edu-section">
     <h2>❤️ Why Donate Blood?</h2>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="icon">🏥</div>
-        <h4>Save Lives</h4>
-        <p>One donation can save up to 3 lives. Accident victims, surgery patients and cancer patients all need blood.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">💪</div>
-        <h4>Health Benefits</h4>
-        <p>Regular donation reduces risk of heart disease, lowers iron levels and stimulates new blood cell production.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">🧪</div>
-        <h4>Free Health Check</h4>
-        <p>Before donation you get a mini health screening — blood pressure, pulse, haemoglobin and more checked free!</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">🌍</div>
-        <h4>No Substitute</h4>
-        <p>Blood cannot be manufactured. The only source is human donors. Your donation is irreplaceable.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">⏱️</div>
-        <h4>Only 30 Minutes</h4>
-        <p>The actual blood donation takes only 8–10 minutes. The whole process including registration is under 30 mins.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">🎖️</div>
-        <h4>Be a Hero</h4>
-        <p>Blood donors are real-life heroes. You may never meet the person you save, but your impact lasts forever.</p>
-      </div>
+      <div class="why-card"><div class="icon">🏥</div><h4>Save 3 Lives</h4><p>One donation helps accident, surgery & cancer patients.</p></div>
+      <div class="why-card"><div class="icon">💪</div><h4>Health Benefits</h4><p>Reduces heart disease risk & stimulates new blood cells.</p></div>
+      <div class="why-card"><div class="icon">🧪</div><h4>Free Health Check</h4><p>BP, pulse & haemoglobin checked free before donation.</p></div>
+      <div class="why-card"><div class="icon">🌍</div><h4>No Substitute</h4><p>Blood can't be manufactured — only humans can give it.</p></div>
+      <div class="why-card"><div class="icon">⏱️</div><h4>Only 30 Mins</h4><p>Actual donation takes just 8–10 minutes of your time.</p></div>
+      <div class="why-card"><div class="icon">🎖️</div><h4>Be a Hero</h4><p>You may never meet them, but your impact lasts forever.</p></div>
     </div>
   </div>
 
@@ -157,108 +129,63 @@
   <div class="edu-section">
     <h2>✅ Who Can Donate?</h2>
     <div class="elig-grid">
-      <div class="elig-item">
-        <div class="elig-icon">✅</div>
-        <div><h4>Age 18–65 years</h4><p>You must be between 18 and 65 years old to donate blood.</p></div>
-      </div>
-      <div class="elig-item">
-        <div class="elig-icon">✅</div>
-        <div><h4>Weight above 45 kg</h4><p>Minimum body weight of 45 kg is required for safe donation.</p></div>
-      </div>
-      <div class="elig-item">
-        <div class="elig-icon">✅</div>
-        <div><h4>Haemoglobin ≥ 12.5 g/dL</h4><p>Adequate haemoglobin level ensures safe donation for both donor and recipient.</p></div>
-      </div>
-      <div class="elig-item">
-        <div class="elig-icon">✅</div>
-        <div><h4>90 days since last donation</h4><p>You must wait at least 90 days (3 months) between whole blood donations.</p></div>
-      </div>
-      <div class="elig-item no">
-        <div class="elig-icon">❌</div>
-        <div><h4>Fever or cold recently</h4><p>Wait at least 2 weeks after recovering from fever, cold or flu.</p></div>
-      </div>
-      <div class="elig-item no">
-        <div class="elig-icon">❌</div>
-        <div><h4>Pregnant or breastfeeding</h4><p>Women who are pregnant or breastfeeding should not donate blood.</p></div>
-      </div>
-      <div class="elig-item no">
-        <div class="elig-icon">❌</div>
-        <div><h4>On certain medications</h4><p>Antibiotics, blood thinners and some other medications may disqualify you temporarily.</p></div>
-      </div>
-      <div class="elig-item no">
-        <div class="elig-icon">❌</div>
-        <div><h4>Recent tattoo or piercing</h4><p>Wait 6 months after getting a tattoo or body piercing before donating.</p></div>
-      </div>
+      <div class="elig-item">✅ &nbsp; Age 18–65 years</div>
+      <div class="elig-item">✅ &nbsp; Weight above 45 kg</div>
+      <div class="elig-item">✅ &nbsp; Haemoglobin ≥ 12.5 g/dL</div>
+      <div class="elig-item">✅ &nbsp; 90 days since last donation</div>
+      <div class="elig-item no">❌ &nbsp; Fever or cold recently</div>
+      <div class="elig-item no">❌ &nbsp; Pregnant or breastfeeding</div>
+      <div class="elig-item no">❌ &nbsp; On certain medications</div>
+      <div class="elig-item no">❌ &nbsp; Recent tattoo or piercing</div>
     </div>
   </div>
 
-  <!-- BLOOD GROUP TABLE -->
+  <!-- COMPATIBILITY TABLE -->
   <div class="edu-section">
-    <h2>🩸 Blood Group Compatibility Chart</h2>
+    <h2>🩸 Blood Group Compatibility</h2>
     <table class="bg-table">
-      <thead>
-        <tr><th>Blood Group</th><th>Can Donate To</th><th>Can Receive From</th><th>Special Note</th></tr>
-      </thead>
+      <thead><tr><th>Blood Group</th><th>Can Donate To</th><th>Can Receive From</th><th>Note</th></tr></thead>
       <tbody>
-        <tr><td><span class="bb">A+</span></td><td>A+, AB+</td><td>A+, A-, O+, O-</td><td>Second most common</td></tr>
-        <tr><td><span class="bb">A-</span></td><td>A+, A-, AB+, AB-</td><td>A-, O-</td><td>Rare, valuable donor</td></tr>
+        <tr><td><span class="bb">A+</span></td><td>A+, AB+</td><td>A+, A-, O+, O-</td><td>2nd most common</td></tr>
+        <tr><td><span class="bb">A-</span></td><td>A+, A-, AB+, AB-</td><td>A-, O-</td><td>Rare donor</td></tr>
         <tr><td><span class="bb">B+</span></td><td>B+, AB+</td><td>B+, B-, O+, O-</td><td>Common in India</td></tr>
-        <tr><td><span class="bb">B-</span></td><td>B+, B-, AB+, AB-</td><td>B-, O-</td><td>Only 2% population</td></tr>
-        <tr><td><span class="bb">O+</span></td><td>A+, B+, O+, AB+</td><td>O+, O-</td><td>Most common blood group</td></tr>
-        <tr><td><span class="bb">O-</span></td><td>Everyone 🌍</td><td>O- only</td><td>Universal donor — most needed!</td></tr>
+        <tr><td><span class="bb">B-</span></td><td>B+, B-, AB+, AB-</td><td>B-, O-</td><td>Only 2% people</td></tr>
+        <tr><td><span class="bb">O+</span></td><td>A+, B+, O+, AB+</td><td>O+, O-</td><td>Most common</td></tr>
+        <tr><td><span class="bb">O-</span></td><td>Everyone 🌍</td><td>O- only</td><td>Universal donor!</td></tr>
         <tr><td><span class="bb">AB+</span></td><td>AB+ only</td><td>Everyone 🎉</td><td>Universal recipient</td></tr>
-        <tr><td><span class="bb">AB-</span></td><td>AB+, AB-</td><td>A-, B-, O-, AB-</td><td>Rarest blood group</td></tr>
+        <tr><td><span class="bb">AB-</span></td><td>AB+, AB-</td><td>A-, B-, O-, AB-</td><td>Rarest type</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- MYTHS VS FACTS -->
+  <!-- MYTHS -->
   <div class="edu-section">
     <h2>🔍 Myths vs Facts</h2>
     <div class="myth-list">
       <div class="myth-card">
         <div class="myth-q">Donating blood is painful and dangerous</div>
-        <div class="myth-a">Blood donation is safe and involves only a small needle prick. Donors feel minimal discomfort and the body replenishes blood within 24–48 hours.</div>
+        <div class="myth-a">It's safe with just a small needle prick. Body replenishes blood within 24–48 hours.</div>
       </div>
       <div class="myth-card">
         <div class="myth-q">You can get infected by donating blood</div>
-        <div class="myth-a">All equipment used is sterile and disposable. There is absolutely zero risk of infection from donating blood at a certified blood bank.</div>
+        <div class="myth-a">All equipment is sterile and disposable. Zero risk of infection at certified blood banks.</div>
       </div>
       <div class="myth-card">
         <div class="myth-q">Donating blood makes you weak for weeks</div>
-        <div class="myth-a">Your body replaces the fluid within 24 hours and red blood cells within 4–6 weeks. Most donors feel completely normal within a few hours.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-q">People with diabetes or high BP can never donate</div>
-        <div class="myth-a">People with well-controlled diabetes or blood pressure are often eligible to donate. Always consult the blood bank staff who will check your vitals.</div>
+        <div class="myth-a">Fluid replaces in 24 hrs, red cells in 4–6 weeks. Most donors feel normal within hours.</div>
       </div>
     </div>
   </div>
 
-  <!-- DONATION PROCESS -->
+  <!-- DONATION STEPS -->
   <div class="edu-section">
-    <h2>🏥 What Happens When You Donate?</h2>
+    <h2>🏥 Donation Process</h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div><h4>Registration</h4><p>Fill in a short form with your personal and health details. Takes about 5 minutes.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div><h4>Health Screening</h4><p>A quick check of your blood pressure, pulse, temperature and haemoglobin level.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div><h4>Blood Donation</h4><p>Around 350–450 ml of blood is collected. The actual process takes only 8–10 minutes.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div><h4>Rest & Refreshments</h4><p>You rest for 10–15 minutes and are given juice and snacks before leaving.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div><h4>You're a Hero! 🎉</h4><p>Your blood is tested, processed and sent to hospitals where it saves up to 3 lives.</p></div>
-      </div>
+      <div class="step"><div class="step-num">1</div><h4>Register</h4><p>Fill health form</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Screening</h4><p>BP & Hb check</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Donate</h4><p>8–10 minutes</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Rest</h4><p>Juice & snacks</p></div>
+      <div class="step"><div class="step-num">5</div><h4>Hero! 🎉</h4><p>3 lives saved</p></div>
     </div>
   </div>
 
@@ -266,11 +193,10 @@
   <div class="edu-section">
     <h2>💡 Did You Know?</h2>
     <div class="facts-list">
-      <div class="fact-item"><div class="fact-num">1</div><p>Every 2 seconds, someone in India needs blood. That's over 40,000 units needed every single day.</p></div>
-      <div class="fact-item"><div class="fact-num">2</div><p>Blood cannot be manufactured in a lab. The only source of blood is voluntary human donors.</p></div>
-      <div class="fact-item"><div class="fact-num">3</div><p>Only 7% of people have O- blood, making it the most critical blood type in emergencies.</p></div>
-      <div class="fact-item"><div class="fact-num">4</div><p>One whole blood donation can be separated into red cells, plasma and platelets — helping up to 3 different patients.</p></div>
-      <div class="fact-item"><div class="fact-num">5</div><p>India needs about 12 million units of blood annually but only collects about 9 million — a 25% shortage.</p></div>
+      <div class="fact-item"><div class="fact-num">1</div><p>Every 2 seconds someone in India needs blood — over 40,000 units daily.</p></div>
+      <div class="fact-item"><div class="fact-num">2</div><p>Blood cannot be manufactured. Only voluntary human donors can provide it.</p></div>
+      <div class="fact-item"><div class="fact-num">3</div><p>Only 7% of people have O- blood — the most critical type in emergencies.</p></div>
+      <div class="fact-item"><div class="fact-num">4</div><p>India needs 12 million units annually but collects only 9 million — a 25% shortage.</p></div>
     </div>
   </div>
 
@@ -287,6 +213,5 @@
 </div>
 
 <footer>BloodSOS © 2024 — Saving Lives Together ❤️</footer>
-
 </body>
 </html>
