@@ -534,3 +534,37 @@ body {
   font-weight: 700;
   color: #1a1210;
 }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: white;
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
