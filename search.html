@@ -5,6 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search Donors - BloodSOS</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .compat-box {
+      background: #fff8e6;
+      border: 1.5px solid #f5c842;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 14px 0;
+      font-size: 13px;
+      display: none;
+    }
+    .compat-box h4 { color: #b8860b; margin-bottom: 8px; font-size: 14px; }
+    .compat-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .compat-tag {
+      background: #fff0f1; color: #d92b3a;
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 12px; font-weight: 700;
+      border: 1px solid #ffd6d9;
+    }
+    .compat-tag.exact { background: #d92b3a; color: white; }
+    .section-label {
+      font-size: 11px; font-weight: 700; color: #888;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      margin: 16px 0 8px;
+    }
+    .donor-card { border-radius: 12px; padding: 16px; background: white; border: 1px solid #e8e2de; margin-bottom: 12px; }
+    .donor-card h3 { font-size: 16px; margin-bottom: 8px; }
+    .compat-note {
+      display: inline-block;
+      background: #fff8e6; color: #b8860b;
+      font-size: 11px; font-weight: 600;
+      padding: 2px 10px; border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .call-btn, .whatsapp-btn {
+      display: inline-block; padding: 8px 16px;
+      border-radius: 8px; text-decoration: none;
+      font-size: 13px; font-weight: 600;
+    }
+    .call-btn { background: #d92b3a; color: white; }
+    .whatsapp-btn { background: #25d366; color: white; }
+  </style>
 </head>
 <body>
 
@@ -15,13 +56,20 @@
 
     <div class="form-group">
       <label>Blood Group</label>
-      <select id="searchBlood">
+      <select id="searchBlood" onchange="showCompatibility()">
         <option value="">-- Select Blood Group --</option>
         <option>A+</option><option>A-</option>
         <option>B+</option><option>B-</option>
         <option>O+</option><option>O-</option>
         <option>AB+</option><option>AB-</option>
       </select>
+    </div>
+
+    <!-- COMPATIBILITY BOX -->
+    <div class="compat-box" id="compatBox">
+      <h4>🩸 Blood Compatibility Info</h4>
+      <p id="compatText"></p>
+      <div class="compat-tags" id="compatTags"></div>
     </div>
 
     <div class="form-group">
@@ -39,5 +87,34 @@
   <div class="footer">BloodSOS © 2024 — Saving Lives Together ❤️</div>
 
   <script type="module" src="app.js"></script>
+
+  <script>
+    // Blood compatibility map — who can donate to whom
+    const compatibility = {
+      "A+":  { canReceiveFrom: ["A+","A-","O+","O-"], note: "A+ patients can receive from A+, A-, O+, O-" },
+      "A-":  { canReceiveFrom: ["A-","O-"], note: "A- patients can only receive from A- and O-" },
+      "B+":  { canReceiveFrom: ["B+","B-","O+","O-"], note: "B+ patients can receive from B+, B-, O+, O-" },
+      "B-":  { canReceiveFrom: ["B-","O-"], note: "B- patients can only receive from B- and O-" },
+      "O+":  { canReceiveFrom: ["O+","O-"], note: "O+ patients can only receive from O+ and O-" },
+      "O-":  { canReceiveFrom: ["O-"], note: "O- is the rarest! Can only receive from O- donors" },
+      "AB+": { canReceiveFrom: ["A+","A-","B+","B-","O+","O-","AB+","AB-"], note: "AB+ is universal recipient — can receive from all blood groups! 🎉" },
+      "AB-": { canReceiveFrom: ["A-","B-","O-","AB-"], note: "AB- can receive from all negative blood groups" },
+    };
+
+    window.showCompatibility = function() {
+      const bg = document.getElementById("searchBlood").value;
+      const box = document.getElementById("compatBox");
+      if (!bg) { box.style.display = "none"; return; }
+
+      const info = compatibility[bg];
+      box.style.display = "block";
+      document.getElementById("compatText").textContent = info.note;
+
+      const tags = document.getElementById("compatTags");
+      tags.innerHTML = info.canReceiveFrom.map(g =>
+        `<span class="compat-tag ${g === bg ? 'exact' : ''}">${g === bg ? '✓ ' : ''}${g}</span>`
+      ).join("");
+    };
+  </script>
 </body>
 </html>

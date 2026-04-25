@@ -227,8 +227,10 @@ window.searchDonors = function () {
       const waLink = `https://wa.me/91${d.phone}?text=${waMessage}`;
  
       count++;
+      const isExact = d.bloodGroup === bloodGroup;
       html += `
         <div class="donor-card">
+          ${!isExact ? `<span class="compat-note">⚡ Compatible donor (${d.bloodGroup})</span>` : ""}
           <h3>🩸 ${d.name}</h3>
           <p><strong>Blood Group:</strong> ${d.bloodGroup}</p>
           <p><strong>City:</strong> ${capitalize(d.city)}</p>
