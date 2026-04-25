@@ -511,3 +511,26 @@ body {
   text-decoration: none;
   font-weight: 600;
 }
+
+.cert-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  border-top: 1px dashed #e8e2de;
+}
+
+.cert-date-box {
+  text-align: center;
+}
+
+.cert-date-box p {
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.date-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1210;
+}

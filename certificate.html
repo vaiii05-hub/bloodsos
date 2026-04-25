@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donor Certificate - BloodSOS</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .cert-footer {
+      display: flex;
+      justify-content: center;
+      padding-top: 16px;
+      border-top: 1px dashed #e8e2de;
+    }
+    .cert-date-box { text-align: center; }
+    .cert-date-box p { font-size: 11px; color: #999; margin-top: 4px; }
+    .date-val { font-size: 14px; font-weight: 700; color: #1a1210; }
+  </style>
 </head>
 <body>
 
@@ -59,17 +70,9 @@
       </div>
       <div class="cert-badge">🩸 Certified Blood Donor Hero</div>
       <div class="cert-footer">
-        <div class="cert-sig">
-          <div class="cert-sig-line"></div>
-          <p>BloodSOS Team</p>
-        </div>
         <div class="cert-date-box">
           <div class="date-val" id="certDisplayDate2">–</div>
           <p>Date of Donation</p>
-        </div>
-        <div class="cert-sig">
-          <div class="cert-sig-line"></div>
-          <p>Authorized Signature</p>
         </div>
       </div>
       <div class="cert-id" id="certID"></div>
@@ -79,7 +82,7 @@
     <div class="share-row">
       <button class="share-btn share-wa" onclick="shareWhatsApp()">💬 Share on WhatsApp</button>
     </div>
-    <a href="index.html" class="back-link">← Back to Home</a>
+    <a href="index.html" class="back-btn">← Back to Home</a>
   </div>
 
 </div>
