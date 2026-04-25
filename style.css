@@ -538,8 +538,8 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+  justify-content: space-between;
+  padding: 16px 32px;
 }
 
 .navbar-links {
