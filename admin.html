@@ -108,9 +108,8 @@
 <nav>
   <div class="nav-l">🩸 BloodSOS <span class="nbadge">ADMIN</span></div>
   <div class="nav-r">
-    <a href="index.html" style="color:#d92b3a;text-decoration:none;font-size:14px;font-weight:600;padding:8px 18px;border-radius:8px;background:white;">🏠 Home</a>
     <button id="logoutBtn" onclick="logout()">Logout</button>
-  </div>
+</div>
 </nav>
 
 <div id="sosBanner">🚨 ACTIVE SOS REQUESTS NEED ATTENTION — Scroll down to view</div>
@@ -122,6 +121,7 @@
     <p>Enter the admin password to continue</p>
     <input type="password" id="adminPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkLogin()"/>
     <button onclick="checkLogin()">Login to Dashboard</button>
+    <a href="index.html" style="display:block;width:100%;margin-top:10px;padding:13px;background:white;color:#d92b3a;border:2px solid #d92b3a;border-radius:10px;font-size:15px;font-weight:700;text-align:center;text-decoration:none;">🏠 Back to Home</a>
     <p id="loginError">❌ Wrong password. Try again.</p>
   </div>
 </div>
