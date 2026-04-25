@@ -263,11 +263,12 @@ body {
   background: rgba(255,255,255,0.2);
   color: white;
   border: 2px solid white;
-  padding: 12px 28px;
+  padding: 14px 48px;
   border-radius: 50px;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 .btn-outline-white:hover {
   background: white;
