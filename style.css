@@ -256,3 +256,20 @@ body {
   background: #cc0000;
   color: white;
 }
+
+.btn-outline-white {
+  display: inline-block;
+  margin-top: 16px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+.btn-outline-white:hover {
+  background: white;
+  color: #d92b3a;
+}
