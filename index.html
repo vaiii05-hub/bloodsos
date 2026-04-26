@@ -5,61 +5,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BloodSOS - Emergency Blood Finder</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar">
-    🩸 BloodSOS
+    <div class="navbar-brand">🩸 BloodSOS</div>
     <div class="navbar-links">
       <a href="index.html" class="nav-link">🏠 Home</a>
       <a href="certificate.html" class="nav-link">🏆 Certificate</a>
-      <a href="admin.html" class="nav-link">👨‍💼 Admin</a>
+      <a href="admin.html" class="nav-link admin">👨‍💼 Admin</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <div class="hero">
-    <h1>Find Blood Donors</h1>
-    <p>Connecting donors and patients in seconds</p>
-
-    <!-- 3 Main Buttons -->
+    <div class="hero-tag"><span></span> Live Donor Network — Pune & Beyond</div>
+    <h1>SAVE A <span>LIFE</span><br>TODAY</h1>
+    <p class="hero-sub">Connect with blood donors instantly. Every second counts in an emergency.</p>
     <div class="btn-container">
-
-      <a href="sos.html" class="btn-sos">
-        🆘 Emergency SOS
-      </a>
-
-      <a href="register.html" class="btn-register">
-        📋 Register as Donor
-      </a>
-
-      <a href="search.html" class="btn-search">
-        🔍 Search Donors
-      </a>
-
+      <a href="sos.html" class="btn-sos">🆘 Emergency SOS</a>
+      <a href="register.html" class="btn-register">📋 Register as Donor</a>
+      <a href="search.html" class="btn-search">🔍 Search Donors</a>
       <a href="education.html" class="btn-outline-white">📚 Learn & Awareness</a>
     </div>
   </div>
 
-  <!-- Info Section -->
-  <div class="info-section">
-    <div class="info-card">
-      <h2>🩸</h2>
-      <h3>Find Donors Fast</h3>
-      <p>Search by blood group and city instantly</p>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">1 Unit</div>
+      <div class="stat-lbl">saves up to 3 lives</div>
     </div>
-    <div class="info-card">
-      <h2>🆘</h2>
-      <h3>Emergency SOS</h3>
-      <p>One click to find nearest matching donor</p>
+    <div class="stat-item">
+      <div class="stat-num">Every 2s</div>
+      <div class="stat-lbl">someone needs blood</div>
     </div>
-    <div class="info-card">
-      <h2>❤️</h2>
-      <h3>Save Lives</h3>
-      <p>Register as donor and help someone today</p>
+    <div class="stat-item">
+      <div class="stat-num">90 Days</div>
+      <div class="stat-lbl">between donations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">38%</div>
+      <div class="stat-lbl">people are eligible</div>
     </div>
   </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section">
+    <div class="section">
+      <div class="section-tag">How It Works</div>
+      <div class="section-title">THREE SIMPLE STEPS</div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔍</div>
+          <h3>Search Donors</h3>
+          <p>Enter blood group and city to find available donors near you instantly.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">📞</div>
+          <h3>Connect Directly</h3>
+          <p>Call or WhatsApp the donor directly. No middlemen, no delays.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">🩸</div>
+          <h3>Save a Life</h3>
+          <p>Donor arrives at hospital and donates blood. A life is saved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features-section">
+    <div class="section">
+      <div class="section-tag">Features</div>
+      <div class="section-title">EVERYTHING YOU NEED</div>
+      <div class="features-grid">
+        <div class="feature-card red">
+          <div class="feature-icon">🆘</div>
+          <h3>Emergency SOS</h3>
+          <p>Send an instant SOS alert with hospital and blood group details.</p>
+          <a href="sos.html" class="feature-link">Send SOS →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Register as Donor</h3>
+          <p>Join our donor network and be ready to save lives anytime.</p>
+          <a href="register.html" class="feature-link">Register →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Search Donors</h3>
+          <p>Find donors by blood group and city with compatibility guide.</p>
+          <a href="search.html" class="feature-link">Search →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Learn & Awareness</h3>
+          <p>Myths, facts, eligibility and everything about blood donation.</p>
+          <a href="education.html" class="feature-link">Learn →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Donor Certificate</h3>
+          <p>Get your Blood Donor Hero certificate after every donation.</p>
+          <a href="certificate.html" class="feature-link">Get Certificate →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👨‍💼</div>
+          <h3>Admin Dashboard</h3>
+          <p>Manage donors, view SOS alerts and export donor data easily.</p>
+          <a href="admin.html" class="feature-link">Dashboard →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <h2>🩸 Be Someone's Hero Today</h2>
+      <p>Register as a donor and save up to 3 lives with one donation</p>
+      <div class="cta-btns">
+        <a href="register.html" class="cta-btn-white">💉 Register as Donor</a>
+        <a href="sos.html" class="cta-btn-outline">🆘 Emergency SOS</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-brand">🩸 BloodSOS</div>
+    <p>Connecting donors and patients in seconds · Saving Lives Together ❤️</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="search.html">Search</a>
+      <a href="register.html">Register</a>
+      <a href="education.html">Learn</a>
+      <a href="certificate.html">Certificate</a>
+      <a href="admin.html">Admin</a>
+    </div>
+    <p class="footer-copy">© 2024 BloodSOS — Made with ❤️ to save lives</p>
+  </footer>
 
 </body>
 </html>
