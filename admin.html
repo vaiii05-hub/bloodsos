@@ -223,10 +223,15 @@
 
   function loadData() {
     onValue(ref(db, "donors"), snap => {
-      allDonors = [];
-      if (snap.exists()) snap.forEach(c => allDonors.push({ id: c.key, ...c.val() }));
-      renderDonors(allDonors); updateStats(); renderCharts();
-    });
+  allDonors = [];
+  if (snap.exists()) {
+    snap.forEach(c => allDonors.push({ id: c.key, ...c.val() }));
+    console.log("Donors loaded:", allDonors.length);
+  }
+   renderDonors(allDonors); 
+   updateStats(); 
+   renderCharts();
+  });
     onValue(ref(db, "sos"), snap => {
       allSOS = [];
       if (snap.exists()) snap.forEach(c => allSOS.push({ id: c.key, ...c.val() }));
