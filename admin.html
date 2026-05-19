@@ -222,15 +222,14 @@
   };
 
   function loadData() {
-    onValue(ref(db, "donors"), snap => {
-  allDonors = [];
-  if (snap.exists()) {
-    snap.forEach(c => allDonors.push({ id: c.key, ...c.val() }));
+   fetch("https://bloodsos-da62b-default-rtdb.asia-southeast1.firebasedatabase.app/donors.json")
+  .then(r => r.json())
+  .then(data => {
+    allDonors = Object.entries(data || {}).map(([id, val]) => ({ id, ...val }));
     console.log("Donors loaded:", allDonors.length);
-  }
-   renderDonors(allDonors); 
-   updateStats(); 
-   renderCharts();
+    renderDonors(allDonors);
+    updateStats();
+    renderCharts();
   });
     onValue(ref(db, "sos"), snap => {
       allSOS = [];
